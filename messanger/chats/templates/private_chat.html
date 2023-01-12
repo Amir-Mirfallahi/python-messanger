@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block logo %}
+    <style>
+        h1 {
+            margin-left: 7px;
+        }
+    </style>
+    {% if user %}
+        <h1>{{ user }}</h1>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% if sender_messages %}
+        <style>
+            #sender_message {
+                font-family: Monospace;
+                font-size: 12pt;
+                max-width: 150px;
+                height: auto;
+                background-color: rgb(181, 233, 77);
+                border-radius: 5%;
+                margin-left: 1%;
+                padding-left: 5px;
+            }
+            #send_message {
+                position:fixed;
+                bottom: 60;
+            }
+            .message {
+                width: 260px;
+                font-family: monospace;
+                border-radius: 10px;
+                background-color: rgb(149, 255, 0);
+                height: 30px;
+            }
+            .submit_button {
+                margin-left: 5px;
+                width: 60px;
+                background-color: greenyellow;
+                border: 0%;
+                border-radius: 50%;
+                padding: 1%;
+                border-color: #dcdcdc;
+            }
+        </style>
+        {% for i in sender_messages %}
+            <div id="sender_message">
+                <p>{{ i }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div id="send_message">
+        <form action="" method="post"> {% csrf_token %}
+            <input type="text" name="message" class="message" placeholder="message">
+            <button type="submit" class="submit_button">Send</button>
+        </form>
+    </div>
+    
+    {% block navbar %}
+    {% endblock %}
+{% endblock %}

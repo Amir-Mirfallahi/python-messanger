@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+        #chat {
+            background-color: rgb(251, 255, 0);
+            height: 7%;
+            margin-bottom: 8px;
+            margin-top: 2px;
+        }
+        #chat:hover {
+            cursor: pointer;
+            background-color: rgb(255, 213, 0);
+            color: black;
+        }
+        a:visited {
+            color: cadetblue;
+            text-decoration: none;
+            font-size: 16pt;
+        }
+        a {
+            color: cadetblue;
+            text-decoration: none;
+            font-size: 16pt;
+        }
+        
+    </style>
+    {% for i in senders %}
+            <a id="chat" href="{{ i }}">
+                <div id="chat">
+                    {{ i }}
+                </div>
+            </a>
+    {% endfor %}
+{% endblock %}

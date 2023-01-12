@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>messanger - {{ title }}</title>
+</head>
+<body>
+    <style>
+                body {
+            text-align: center;
+        }
+        h1 {
+            font-size: 80pt;
+            color: #d8771d;
+        }
+        
+        /* Add a black background color to the top navigation */
+    
+        li {
+            text-align: left;
+        }
+        .topnav {
+        background-color: rgb(90, 103, 71);
+        overflow: hidden;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+        background-color: rgb(225, 132, 50);
+        color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+        background-color: #d8771d;
+        color: white;
+        }
+    </style>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+    <div>
+        <div class="topnav">
+            <a href="/" class="active">Home</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            {% block navbar %}
+            {% endblock %}
+        </div>
+    </div>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
