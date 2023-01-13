@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block logo %}
+    <h2 class="title">PythonMessanger</h2>
+    <a href="add-contact"><img class="add_contact" src="https://icon-library.com/images/contact-icon/contact-icon-17.jpg"></a>
+{% endblock %}
 {% block content %}
     <style>
         #chat {
@@ -22,13 +26,23 @@
             text-decoration: none;
             font-size: 16pt;
         }
+        .add_contact {
+            height: 30px;
+            width: auto;
+        }
+        .title {
+            margin-bottom: 0;
+        }
+        label {
+            color: black;
+        }
         
     </style>
     {% for i in senders %}
-            <a id="chat" href="{{ i }}">
-                <div id="chat">
-                    {{ i }}
-                </div>
-            </a>
+        <a id="chat" href="{{ i }}/pv/">
+            <div id="chat">
+                {{ i }}
+            </div>
+        </a>
     {% endfor %}
 {% endblock %}

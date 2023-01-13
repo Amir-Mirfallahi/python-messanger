@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        a {
+            text-decoration: none;
+            color: darkblue;
+        }
+        a:visited {
+            text-decoration: none;
+            color: darkblue;
+        }
+        #redirect_to_pv {
+            background-color: rgb(132, 255, 0);
+            width: 99%;
+            height: 7%;
+            font-size: 20pt;
+            margin-bottom: 8px;
+            margin-top: 2px;
+            padding-left: 5px;
+        }
+        #redirect_to_pv:hover {
+            background-color: yellow;
+        }
+    </style>
+    {% for i in users %}
+        <a href="/chats/{{ i }}/pv/">
+            <div id="redirect_to_pv">
+                {{ i }}
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block navbar %}{% endblock %}

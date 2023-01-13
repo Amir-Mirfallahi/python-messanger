@@ -40,8 +40,13 @@ def private_chat(request, user):
     
     if request.POST:
         Messages.objects.create(from_user=request.user, to_user=User.objects.get(username=str(user)), message=request.POST['message'])
-        return redirect(f"/chats/{user}")
+        return redirect(f"/chats/{user}/pv/")
     context['sender_messages'] = messages
 
     return render(request, 'private_chat.html', context)
-
+def add_contact(request):
+    users = User.objects.all()
+    context = {
+        'users': users
+    }
+    return render(request, 'add-contact.html', context)
