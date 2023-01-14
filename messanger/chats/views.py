@@ -9,6 +9,7 @@ from .models import (
 # Create your views here.
 @login_required
 def chats(request):
+    # chats to user
     message_sender = []
     for chat in Messages.objects.filter(to_user=request.user):
         message_sender.append(chat.from_user)
@@ -17,10 +18,13 @@ def chats(request):
     for i in range(0, len(message_sender), 2):
         sender.append(message_sender[i])
     senders = [i for n, i in enumerate(sender) if i not in sender[:n]] 
-    print(senders)
-    message = []
-    for i in range(1, len(message_sender), 2):
-        message.append(message_sender[i])
+    # chats from user
+    chats = []
+    for i in Messages.objects.filter(from_user=request.user):
+        chats.append(i.to_user)
+    for a in chats:
+        senders.append(a)
+    
     context =  {
         'chatstatus': 'active',
         "senders": senders,
@@ -46,7 +50,13 @@ def private_chat(request, user):
     return render(request, 'private_chat.html', context)
 def add_contact(request):
     users = User.objects.all()
+    result = []
+    for i in users:
+        user = i
+        if user == request.user:
+            continue
+        result.append(user)
     context = {
-        'users': users
+        'users': result
     }
     return render(request, 'add-contact.html', context)
