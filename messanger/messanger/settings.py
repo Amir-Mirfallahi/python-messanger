@@ -50,6 +50,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'messanger.urls'
+LOGIN_URL = "/login/"
 
 TEMPLATES = [
     {

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import time
 from .models import (
@@ -7,7 +7,7 @@ from .models import (
 )
 
 # Create your views here.
-@staff_member_required
+@login_required
 def chats(request):
     message_sender = []
     for chat in Messages.objects.filter(to_user=request.user):

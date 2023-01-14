@@ -1,16 +1,13 @@
 {% extends "main.html" %}
 {% block navbar %}
-    <a href="/chats">Messanger</a>
+    {% if user.is_authenticated %}
+        <a href="/chats">Messanger</a>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/sign-up">Sign-up</a>
+        <a href="/login">Login</a>
+    {% endif %}
 {% endblock %}
 {% block content %}
-    <style>
-        .Messanger_button {
-            background-color: cadetblue;
-            /* color: rgba(0, 3, 1, 0.671); */
-            height: 55%;
-            width: 55%;
-            font-size: 110pt;
-        }
-    </style>
-    <a href="/chats"><button class="Messanger_button"></a>Messanger</button></a>
+    <a href="/chats"><button class="Messanger_button">Messanger</button></a>
 {% endblock %}
